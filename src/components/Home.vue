@@ -21,6 +21,19 @@ export default {
         name: 'Anna', 
         entries: [],
     }
+  },
+  methods: {
+    async getAllEntries() {
+      try {
+        const response = await this.$http.get('http://localhost:8000/api/journal_entries/');
+        this.entries = response.data; 
+      } catch (error) {
+          console.log(error);
+      }
+    }
+  }, 
+  created() {
+    this.getAllEntries();
   }
 }
 </script>
