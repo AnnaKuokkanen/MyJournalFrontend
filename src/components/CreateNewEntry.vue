@@ -9,8 +9,6 @@
 </template>
 
 <script>
-  import {v4 as uuidv4} from 'uuid';
-
   export default {
     data() {
       return { 
@@ -20,14 +18,13 @@
     },
     props: ['entries'], 
     methods: {
-      addEntry() {
+      async addEntry() {
         this.showTextField = false
         const newEntryObject = {
-          id: uuidv4(),
-          date: new Date(), 
           content: this.$data.newEntry
         }
-        this.$props.entries.push(newEntryObject)
+        const response = await this.$http.post('http://localhost:8000/api/journal_entries/', newEntryObject);
+        this.$props.entries.push(response.data)
         console.log(this.$props.entries)
         this.$data.newEntry = '' 
       }

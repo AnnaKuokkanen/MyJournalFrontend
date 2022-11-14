@@ -7,7 +7,7 @@
         <tbody>
           <tr
             v-for="entry in entries"
-            :key="entry.content"
+            :key="entry.id"
           >
             <td>{{ entry.content }}</td>
           </tr>
