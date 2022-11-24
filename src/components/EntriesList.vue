@@ -24,13 +24,8 @@
   export default {
     props: ['entries'], 
     methods: {
-      async deleteEntry(entryId) {
-        try {
-          const response = await this.$http.delete(`http://localhost:8000/api/journal_entries/${entryId}/`);
-        } catch (error) {
-            console.log(error);
-        }
-        this.entries.filter(entry => entry.id !== entryId);
+      deleteEntry(entryId) {
+        this.$emit('deleteEntry', entryId);
       }
     }
   }

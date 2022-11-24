@@ -1,7 +1,7 @@
 <template>
     <div id="home">     
         <h1>Welcome to your Journal, {{name}}!</h1>
-        <EntriesList :entries="entries" />
+        <EntriesList :entries="entries" @deleteEntry="deleteEntry" />
         <CreateNewEntry :entries="entries" />
     </div>
 </template>
@@ -30,7 +30,16 @@ export default {
       } catch (error) {
           console.log(error);
       }
-    }
+    },
+
+    async deleteEntry(entryId) {
+        try {
+          const response = await this.$http.delete(`http://localhost:8000/api/journal_entries/${entryId}/`);
+        } catch (error) {
+            console.log(error);
+        }
+        this.entries.splice(this.entries.map(entry => entry.id).indexOf(entryId));
+      }
   }, 
   created() {
     this.getAllEntries();
