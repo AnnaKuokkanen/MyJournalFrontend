@@ -2,8 +2,19 @@
   <div id="create-entry">
     <v-btn rounded raised v-if="!showTextField" @click="showTextField = !showTextField">Create a new entry</v-btn>
     <v-form id="create-entry-form" v-if="showTextField">
-      <v-text-field placeholder="Title" autofocus></v-text-field>
-      <v-textarea v-model="newEntry" placeholder="Dear diary..."></v-textarea>
+      <h3>Describle your day:</h3>
+      <v-text-field label="Title" autofocus></v-text-field>
+      <v-textarea v-model="newEntry" label="Dear diary..."></v-textarea>
+      <h3>Rate your day:</h3>
+      <v-rating
+        empty-icon="mdi-heart-outline"
+        full-icon="mdi-heart"
+        hover
+        length="5"
+        size="50"
+        color="#ffd1dc"
+        background-color="#ffd1dc"
+      ></v-rating>
       <v-btn id="submit-btn" rounded small @click="addEntry">Submit</v-btn>
       <v-btn id="delete-btn" rounded small @click="cancelAddEntry">Cancel</v-btn>
     </v-form>
