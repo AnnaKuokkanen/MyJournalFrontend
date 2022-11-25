@@ -15,7 +15,7 @@ export default {
     EntriesList,
     CreateNewEntry
   },
-  name: 'Home',
+  name: 'HomePage',
   data () {
     return {
         name: 'Anna', 
@@ -28,17 +28,16 @@ export default {
         const response = await this.$http.get('http://localhost:8000/api/journal_entries/');
         this.entries = response.data; 
       } catch (error) {
-          console.log(error);
+        console.log(error);
       }
     },
-
     async deleteEntry(entryId) {
-        try {
-          const response = await this.$http.delete(`http://localhost:8000/api/journal_entries/${entryId}/`);
-        } catch (error) {
-            console.log(error);
-        }
-        this.entries.splice(this.entries.map(entry => entry.id).indexOf(entryId));
+      try {
+        await this.$http.delete(`http://localhost:8000/api/journal_entries/${entryId}/`);
+      } catch (error) {
+        console.log(error);
+      }
+        this.entries.splice(this.entries.map(entry => entry.id).indexOf(entryId), 1);
       }
   }, 
   created() {
@@ -48,7 +47,7 @@ export default {
 </script>
 
 <style>
-    h1 {
-      background-color: #ffd1dc;
-    }
+  h1 {
+    background-color: #ffd1dc;
+  }
 </style>
