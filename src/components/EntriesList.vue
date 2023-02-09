@@ -9,7 +9,7 @@
             v-for="entry in entries"
             :key="entry.id"
           >
-            <td>{{ entry.content }}</td>
+            <td @click="redirectToEntryDetails(entry)">{{ entry.title }}</td>
             <td>
               <v-btn rounded small @click="deleteEntry(entry.id)">Delete</v-btn>
             </td>
@@ -21,11 +21,16 @@
 </template>
 
 <script>
+  import EntryDetailView from './EntryDetailView.vue'
+
   export default {
     props: ['entries'], 
     methods: {
       deleteEntry(entryId) {
         this.$emit('deleteEntry', entryId);
+      },
+      redirectToEntryDetails(entry) {
+        this.$router.push({ name: 'JournalEntryDetails', params: { id: entry.id }, component: EntryDetailView })
       }
     }
   }

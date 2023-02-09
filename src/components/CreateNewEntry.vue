@@ -2,7 +2,7 @@
   <div id="create-entry">
     <v-btn rounded raised v-if="!showTextField" @click="showTextField = !showTextField">Create a new entry</v-btn>
     <v-form id="create-entry-form" v-if="showTextField">
-      <h3>Describle your day:</h3>
+      <h3>Describe your day:</h3>
       <v-menu v-model="displayDateMenu" :close-on-content-click="false" transition="scale-transition" offset-y
         max-width="35vmax" min-width="35vmax">
         <template v-slot:activator="{ on }">

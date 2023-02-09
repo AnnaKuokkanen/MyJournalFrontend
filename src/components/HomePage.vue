@@ -40,7 +40,7 @@ export default {
         this.entries.splice(this.entries.map(entry => entry.id).indexOf(entryId), 1);
       }
   }, 
-  created() {
+  beforeMount() {
     this.getAllEntries();
   }
 }

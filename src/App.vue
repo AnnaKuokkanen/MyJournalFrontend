@@ -19,3 +19,10 @@ export default {
   color: #2e3f4f;
 }
 </style>
+
+<!-- Color palette:
+	#b3e8e5
+  #2f8f9d
+  #ffb0b0
+  #ffd1dc
+-->
