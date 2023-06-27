@@ -33,7 +33,7 @@
     methods: {
       async getEntryDetails(entryId) {
         try {
-          const response = await this.$http.get(`http://localhost:8000/journal_entries/${entryId}/`);
+          const response = await this.$http.get(`/journal_entries/${entryId}/`);
           this.entry = response.data;
         } catch (error) {
           console.log(error)
@@ -42,8 +42,8 @@
 
       async deleteEntry(entryId) {
         try {
-          await this.$http.delete(`http://localhost:8000/journal_entries/${entryId}/`);
-          this.$router.push('/journal');
+          await this.$http.delete(`/journal_entries/${entryId}/`);
+          this.$router.push('/journal/');
         } catch (error) {
           console.log(error);
         }
@@ -57,8 +57,8 @@
           rating: this.$data.entry.rating
         }
         try {
-          await this.$http.put(`http://localhost:8000/journal_entries/${entryId}/`, updatedEntry);
-          this.$router.push('/journal');
+          await this.$http.put(`/journal_entries/${entryId}/`, updatedEntry);
+          this.$router.push('/journal/');
         } catch (error) {
           console.log(error);
         }

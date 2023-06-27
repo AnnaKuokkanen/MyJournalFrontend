@@ -8,6 +8,7 @@ import router from './router'
 import 'vuetify/dist/vuetify.min.css';
 import axios from 'axios'
 
+axios.defaults.baseURL = 'http://localhost:8000';
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false
 Vue.use(Vuetify);
