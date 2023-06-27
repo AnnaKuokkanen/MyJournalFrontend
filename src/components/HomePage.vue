@@ -25,7 +25,7 @@ export default {
   methods: {
     async getAllEntries() {
       try {
-        const response = await this.$http.get('http://localhost:8000/api/journal_entries/');
+        const response = await this.$http.get('http://localhost:8000/journal_entries/');
         this.entries = response.data; 
       } catch (error) {
         console.log(error);
@@ -33,7 +33,7 @@ export default {
     },
     async deleteEntry(entryId) {
       try {
-        await this.$http.delete(`http://localhost:8000/api/journal_entries/${entryId}/`);
+        await this.$http.delete(`http://localhost:8000/journal_entries/${entryId}/`);
       } catch (error) {
         console.log(error);
       }

@@ -46,7 +46,7 @@ export default {
         rating: this.$data.newRating
       }
       console.log(newEntryObject)
-      const response = await this.$http.post('http://localhost:8000/api/journal_entries/', newEntryObject);
+      const response = await this.$http.post('http://localhost:8000/journal_entries/', newEntryObject);
       this.$props.entries.push(response.data)
       console.log(this.$props.entries)
       this.$data.newEntry = ''
